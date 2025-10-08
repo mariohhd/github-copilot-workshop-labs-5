@@ -1,4 +1,9 @@
-Flask
-Flask-SQLAlchemy
-Flask-Migrate
-Flask-RESTful
+fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+email-validator
+python-jose[cryptography]
+passlib[bcrypt]
+pytest
+httpx

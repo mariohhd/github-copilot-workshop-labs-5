@@ -8,15 +8,17 @@ This repository contains a collection of challenges to improve your skills with 
 - [GitHub Copilot](https://copilot.github.com/) extensions installed.
 - Python 3.8 or higher
 - Pytest
-- Flask
+- FastAPI
+- Uvicorn
 
 ## Getting started
 
 1. Clone this repository.
 2. Open the project in Visual Studio Code or your favorite editor.
 3. Install the necessary dependencies by running `pip install -r requirements.txt` in your virtual environment.
-4. Run the application using `python app/app.py` (virtual environment is already configured).
-5. Fix any issues in the code to ensure the API endpoints work as expected.
+4. Run the application using `uvicorn app.app:app --reload` or `python app/app.py` (virtual environment is already configured).
+5. Access the API documentation at `http://127.0.0.1:8000/docs` (Swagger UI) or `http://127.0.0.1:8000/redoc` (ReDoc).
+6. Test the API endpoints to ensure they work as expected.
 
 ## Challenges
 
@@ -111,39 +113,49 @@ In this section, you’ll explore **GitHub Copilot Coding Agent** in action. Fol
 6. **Observe and review** how Copilot handles the implementation.  
 7. **Merge** the changes once ready — and don’t stop there! Try asking Copilot for more improvements or creative additions.  
 
-## Expected API Endpoints (once fixed)
+## Expected API Endpoints
 
-- `GET /employees` - List all employees
-- `POST /employees` - Add a new employee
-- `DELETE /employees/<id>` - Delete an employee by ID
-- `PUT /employees/<id>` - Update an employee by ID
+- `GET /api/v1/employees` - List all employees
+- `POST /api/v1/employees` - Add a new employee
+- `DELETE /api/v1/employees/{id}` - Delete an employee by ID
+- `PUT /api/v1/employees/{id}` - Update an employee by ID
+- `GET /api/v1/employees/{id}` - Get an employee by ID
+- `GET /api/v1/employees/by-email/{email}` - Get an employee by email
+- `GET /api/v1/employees/by-department/{department}` - Get employees by department
 
+## API Documentation
+
+FastAPI automatically generates interactive API documentation:
+- **Swagger UI**: `http://127.0.0.1:8000/docs`
+- **ReDoc**: `http://127.0.0.1:8000/redoc`
 
 ## Test Employee API
 
 ### 1. Create a New Employee
 ```sh
-curl -X POST http://localhost:5000/employees -H "Content-Type: application/json" -d '{
+curl -X POST http://localhost:8000/api/v1/employees -H "Content-Type: application/json" -d '{
+  "id": 1,
   "name": "John Doe",
   "position": "Software Engineer",
-  "department": "Engineering"
+  "department": "Engineering",
+  "email": "john.doe@example.com"
 }'
 ```
 
 ### 2. Get All Employees
 ```sh
-curl -X GET http://localhost:5000/employees
+curl -X GET http://localhost:8000/api/v1/employees
 ```
 
 ### 3. Get Employee by ID
 ```sh
-curl -X GET http://localhost:5000/employees/{id}
+curl -X GET http://localhost:8000/api/v1/employees/{id}
 ```
 Replace `{id}` with the actual employee ID.
 
 ### 4. Update an Existing Employee
 ```sh
-curl -X PUT http://localhost:5000/employees/{id} -H "Content-Type: application/json" -d '{
+curl -X PUT http://localhost:8000/api/v1/employees/{id} -H "Content-Type: application/json" -d '{
   "name": "Jane Doe",
   "position": "Senior Software Engineer", 
   "department": "Engineering"
@@ -153,9 +165,21 @@ Replace `{id}` with the actual employee ID.
 
 ### 5. Delete an Employee
 ```sh
-curl -X DELETE http://localhost:5000/employees/{id}
+curl -X DELETE http://localhost:8000/api/v1/employees/{id}
 ```
 Replace `{id}` with the actual employee ID.
+
+### 6. Get Employee by Email
+```sh
+curl -X GET http://localhost:8000/api/v1/employees/by-email/{email}
+```
+Replace `{email}` with the actual employee email.
+
+### 7. Get Employees by Department
+```sh
+curl -X GET http://localhost:8000/api/v1/employees/by-department/{department}
+```
+Replace `{department}` with the actual department name.
 
 ## License
 

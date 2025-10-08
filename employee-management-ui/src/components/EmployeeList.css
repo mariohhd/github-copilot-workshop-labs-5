@@ -1,0 +1,85 @@
+.employee-list-container {
+  background: #f9fafb;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.04);
+}
+
+.employee-list-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 16px;
+}
+
+.add-btn {
+  background: #3182ce;
+  color: #fff;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.add-btn:hover {
+  background: #2563eb;
+}
+
+.employee-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+}
+
+.employee-table th, .employee-table td {
+  padding: 12px 16px;
+  text-align: left;
+}
+
+.employee-table th {
+  background: #e2e8f0;
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.employee-table tr {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.employee-table tr:last-child {
+  border-bottom: none;
+}
+
+.view-btn, .edit-btn, .delete-btn {
+  margin-right: 8px;
+  padding: 6px 14px;
+  border-radius: 5px;
+  border: none;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.view-btn {
+  background: #38b2ac;
+  color: #fff;
+}
+.view-btn:hover {
+  background: #319795;
+}
+
+.edit-btn {
+  background: #f6ad55;
+  color: #fff;
+}
+.edit-btn:hover {
+  background: #dd6b20;
+}
+
+.delete-btn {
+  background: #e53e3e;
+  color: #fff;
+}
+.delete-btn:hover {
+  background: #c53030;
+}
